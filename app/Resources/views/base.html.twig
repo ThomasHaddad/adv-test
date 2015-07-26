@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}AAS BUILDING{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}"/>
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-fixed-top">
+        <div class="container">
+            <img src="{{ asset("images/logo.jpg") }}" alt=""/>
+            <ul class="nav navbar-nav navbar-left   ">
+                <li><a href="{{ path('index') }}" title="accueil">Accueil</a></li>
+                <li><a href="#" title="services">Les services</a></li>
+                <li><a href="#" title="network">Le réseau</a></li>
+                <li><a href="#" title="sitemap">Plan du site</a></li>
+                <li><a href="#" title="contact">Nous contacter</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if app.user %}
+
+                    <li role="presentation"><a href=""><span
+                                    class="glyphicon glyphicon-user "></span>Bienvenue {{ app.user.username }}</a></li>
+                    <li role="presentation"><a href="{{ path('editHomepage') }}" title="edit">Gérer le contenu</a></li>
+                    <li role="presentation"><a href="{{ path('logout') }}" title="deconnexion">Déconnexion</a></li>
+                {% else %}
+                    <li role="presentation"><a href="{{ path('register') }}" title="inscription">Inscription</a></li>
+                    <li role="presentation"><a href="{{ path('login') }}" title="connexion">Connexion</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <div class="container" style="margin-top:100px;">
+
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <div class="alert alert-success">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('error') %}
+            <div class="alert alert-danger">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+
+        {% block main_content %}{% endblock %}
+    </div>
+</div>
+    {% block footer %}
+        <footer class="footer">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <li><a href="">Lien 1</a></li>
+                    <li><a href="">Lien 2</a></li>
+                    <li><a href="">Lien 3</a></li>
+                    <li><a href="">Lien 4</a></li>
+                </ul>
+            </div>
+        </footer>
+    {% endblock %}
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block main_content %}
+    {% if info %}
+        <h1 class="text-center text-uppercase">{{ info.content }}</h1>
+    {% else %}
+        <h1 class="text-center text-uppercase">Titre par défaut de la Homepage</h1>
+    {% endif %}
+    <main>
+
+        <section>
+            <h2 class="text-center text-uppercase">Nos 32 points d'implantation</h2>
+            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, accusantium aliquam commodi culpa dicta eaque, est facilis illum iusto magnam recusandae sequi soluta! Amet iusto, magni quis saepe sequi voluptate?</p>
+            <img src="{{ asset('images/france.gif') }}" alt="la france"/>
+        </section>
+        <section>
+            <h2 class="text-center text-uppercase">Infos</h2>
+            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo inventore ipsam laudantium natus. Ad consequatur corporis earum error facere incidunt laudantium quae repellendus ut velit. Cumque inventore minima sed sit.</p>
+            <img src="{{ asset('images/paris.gif') }}" alt="le paris"/>
+        </section>
+    </main>
+{% endblock %}

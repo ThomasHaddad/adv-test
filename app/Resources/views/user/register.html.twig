@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Inscription | {{ parent() }}
+{% endblock %}
+
+{% block main_content %}
+
+    <h1>Inscription</h1>
+
+    {{ form(registerForm,{'attr':{'novalidate':'novalidate'}}) }}
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

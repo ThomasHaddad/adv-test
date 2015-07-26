@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+     Modification | {{ parent() }}
+{% endblock %}
+
+{% block main_content %}
+   <h1>Modification des informations la homepage</h1>
+    {{ form(infoForm, {"attr":{"novalidate":"novalidate"}}) }}
+{% endblock %}

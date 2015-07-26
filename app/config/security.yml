@@ -1,0 +1,26 @@
+security:
+    firewalls:
+        main:
+            pattern: ^/
+            anonymous: ~
+            http_basic: ~
+            form_login:
+                login_path: login
+                check_path: login_check
+            logout:
+                path: logout
+                target: index
+
+    providers:
+        main:
+            entity:
+                class: AppBundle\Entity\User
+                property: username
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: sha512
+            iterations:
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
